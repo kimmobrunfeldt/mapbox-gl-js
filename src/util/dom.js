@@ -53,12 +53,20 @@ exports.suppressClick = function() {
     }, 0);
 };
 
+// Very ugly hack to fix https://github.com/Leaflet/Leaflet/issues/2795
+var _containerScale = 1;
+exports.setContainerScale = function(scale) {
+    _containerScale = scale;
+}
+
 exports.mousePos = function (el, e) {
     const rect = el.getBoundingClientRect();
     e = e.touches ? e.touches[0] : e;
+    const clientX = e.clientX / _containerScale;
+    const clientY = e.clientY / _containerScale;
     return new Point(
-        e.clientX - rect.left - el.clientLeft,
-        e.clientY - rect.top - el.clientTop
+        clientX - rect.left - el.clientLeft,
+        clientY - rect.top - el.clientTop
     );
 };
 
