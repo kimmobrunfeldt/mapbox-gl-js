@@ -23,6 +23,7 @@ mapboxgl.LngLatBounds = require('./geo/lng_lat_bounds');
 mapboxgl.Point = require('point-geometry');
 
 mapboxgl.Evented = require('./util/evented');
+mapboxgl.Dom = require('./util/dom');
 mapboxgl.supported = require('./util/browser').supported;
 
 const config = require('./util/config');
